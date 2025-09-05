@@ -1,0 +1,179 @@
+/* Fondo animado degradado difuminado en flujo */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(270deg,
+    #ff6a00,
+    #ee0979,
+    #00c6ff,
+    #7f00ff,
+    #ff6a00);
+  background-size: 1000% 1000%;
+  animation: gradientFlow 30s ease infinite;
+  z-index: -1;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Fuente general */
+body, input, select, button {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Tamaño y estilo de imagen en la tabla */
+.product-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #444;
+  transition: transform 0.3s ease;
+}
+.product-img:hover {
+  transform: scale(1.1);
+  border-color: #1abc9c;
+}
+
+/* Estilos para alertas de mensajes */
+#message {
+  min-height: 38px;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  opacity: 0.95;
+  transition: opacity 0.5s ease;
+}
+
+/* Animación para entradas/salidas de mensajes */
+.animate__animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+/* Tabla con scroll */
+.table-responsive {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+/* Estilo para números en rojo cuando stock bajo */
+.text-danger.fw-bold {
+  font-weight: 700 !important;
+  color: #e74c3c !important;
+}
+
+body::before {   /* Esto decide si esta o no el fondo animado */
+  display: none; 
+}
+
+/* Modos de fondo y texto */
+/* Estos estilos los alterna el toggle en JS */
+body.bg-dark {
+  background-color: #121212 !important;
+  color: #f0f0f0 !important;
+}
+
+body.bg-light {
+  background-color: #f9f9f9 !important;
+  color: #222 !important;
+}
+
+/* Para inputs, selects y botones en modo claro */
+body.bg-light input,
+body.bg-light select,
+body.bg-light button {
+  background-color: #fff !important;
+  color: #222 !important;
+  border-color: #ccc !important;
+}
+
+/* Botón toggle tema */
+#toggleThemeBtn {
+  transition: all 0.3s ease;
+}
+
+/* Mejorar botones con sombras y transición */
+button {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 12px rgba(26, 188, 156, 0.7);
+}
+
+/* Estilos para inputs y selects */
+input.form-control, select.form-select {
+  border-radius: 0.375rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus, select.form-select:focus {
+  border-color: #1abc9c;
+  box-shadow: 0 0 8px #1abc9c;
+  outline: none;
+}
+
+/* Scroll suave para la tabla */
+.table-responsive::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #1abc9c;
+  border-radius: 4px;
+}
+
+/* Tooltip estilos (Bootstrap ya incluye, pero se puede personalizar) */
+.tooltip-inner {
+  background-color: #1abc9c !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* Resumen */
+#summary {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Media queries para móviles */
+@media (max-width: 576px) {
+  .product-img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Animaciones personalizadas para mensajes (usando animate.css clases) */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate__fadeInDown {
+  animation-name: fadeInDown;
+}
