@@ -9,8 +9,8 @@ var productCount = document.getElementById('product-count');
 var inventoryTotal = document.getElementById('inventory-total');
 var exportCSVBtn = document.getElementById('exportCSVBtn');
 var toggleThemeBtn = document.getElementById('toggleThemeBtn');
-// Bootstrap Modal solo si existe el modalElement
-var bootstrapModal = modalElement
+// Bootstrap Modal solo si existe el modalElement y Bootstrap está disponible
+var bootstrapModal = modalElement && window.bootstrap
     ? new window.bootstrap.Modal(modalElement)
     : null;
 var isEditing = false;
@@ -216,3 +216,14 @@ if (toggleThemeBtn) {
 }
 // Inicializar tabla al cargar página
 renderTable();
+// Mostrar mensaje de bienvenida después de cargar la página
+document.addEventListener('DOMContentLoaded', function () {
+    showMessage('¡Hola! Bienvenido al Sistema de Inventario', 'info');
+});
+// Si la página ya está cargada, mostrar mensaje inmediatamente
+if (document.readyState === 'loading') {
+    // Ya se configuró el listener arriba
+}
+else {
+    showMessage('¡Hola! Bienvenido al Sistema de Inventario', 'info');
+}

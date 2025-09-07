@@ -22,8 +22,8 @@ const inventoryTotal = document.getElementById('inventory-total') as HTMLElement
 const exportCSVBtn = document.getElementById('exportCSVBtn') as HTMLButtonElement | null;
 const toggleThemeBtn = document.getElementById('toggleThemeBtn') as HTMLButtonElement | null;
 
-// Bootstrap Modal solo si existe el modalElement
-const bootstrapModal = modalElement
+// Bootstrap Modal solo si existe el modalElement y Bootstrap está disponible
+const bootstrapModal = modalElement && (window as any).bootstrap
   ? new (window as any).bootstrap.Modal(modalElement)
   : null;
 
@@ -259,3 +259,15 @@ if (toggleThemeBtn) {
 
 // Inicializar tabla al cargar página
 renderTable();
+
+// Mostrar mensaje de bienvenida después de cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  showMessage('¡Hola! Bienvenido al Sistema de Inventario', 'info');
+});
+
+// Si la página ya está cargada, mostrar mensaje inmediatamente
+if (document.readyState === 'loading') {
+  // Ya se configuró el listener arriba
+} else {
+  showMessage('¡Hola! Bienvenido al Sistema de Inventario', 'info');
+}
